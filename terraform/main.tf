@@ -12,22 +12,14 @@ provider "google" {
 }
 
 resource "google_compute_network" "vpc_network" {
-  name = "filestore-network"
+  name = "bucket-network"
 }
 
-resource "google_filestore_instance" "instance" {
-  name     = "filestore-instance"
-  location = "central-europe2-c"
-  tier     = "BASIC_HDD"
+resource "google_storage_bucket" "static" {
+  name                        = "loading-bucket-437011"
+  location                    = "europe-central2"
+  storage_class               = "STANDARD"
+  uniform_bucket_level_access = true
 
-  file_shares {
-    capacity_gb = 10
-    name        = "max-store"
-  }
-
-  networks {
-    network = google_compute_network.vpc_network.name
-    modes   = ["MODE_IPV4"]
-  }
 }
 
