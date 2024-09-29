@@ -1,8 +1,8 @@
-# First parameter - the name of the file that should be stored
-filename = $1
+#!/bin/bash
+
+
 
 # Connecting to cloud shell via SSH
 gcloud auth login
-gcloud cloud-shell ssh
-
-
+# Uploading the file to a GCS bucket
+gcloud storage cp $1 gs://loading-bucket-437011
