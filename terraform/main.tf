@@ -11,15 +11,29 @@ provider "google" {
   project = "terraform-gcp-437011"
 }
 
-resource "google_compute_network" "vpc_network" {
-  name = "bucket-network"
-}
 
-resource "google_storage_bucket" "static" {
-  name                        = "loading-bucket-437011"
+resource "google_storage_bucket" "static-1" {
+  name                        = "loading-bucket-437011-1"
   location                    = "europe-central2"
   storage_class               = "STANDARD"
   uniform_bucket_level_access = true
+  force_destroy               = "true"
 
 }
 
+
+resource "google_storage_bucket" "static-2" {
+  name                        = "loading-bucket-437011-2"
+  location                    = "europe-central2"
+  storage_class               = "STANDARD"
+  uniform_bucket_level_access = true
+  force_destroy               = "true"
+}
+
+resource "google_storage_bucket" "static-3" {
+  name                        = "loading-bucket-437011-3"
+  location                    = "europe-central2"
+  storage_class               = "STANDARD"
+  uniform_bucket_level_access = true
+  force_destroy               = "true"
+}
